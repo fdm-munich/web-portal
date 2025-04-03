@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { type Icon } from "@tabler/icons-react"
+import * as React from "react";
+// import { IconLogout, type Icon } from "@tabler/icons-react"
+import { LogOut } from "lucide-react";
 
 import {
   SidebarGroup,
@@ -9,34 +10,44 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import { useUserStore } from "@/stores/user";
+import { Pages, usePageStore } from "@/stores/page";
 
-export function NavSecondary({
+export function NavSecondary( {
   items,
   ...props
 }: {
   items: {
     title: string
-    url: string
-    icon: Icon
+    page: Pages
+    icon: any
   }[]
-} & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
+} & React.ComponentPropsWithoutRef<typeof SidebarGroup> ) {
+  const signOut = useUserStore( s => s.signOut );
+  const setPage = usePageStore( s => s.setPage );
+  const page = usePageStore( s => s.page );
+
   return (
     <SidebarGroup {...props}>
       <SidebarGroupContent>
         <SidebarMenu>
-          {items.map((item) => (
+          {items.map( ( item ) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
-                <a href={item.url}>
-                  <item.icon />
-                  <span>{item.title}</span>
-                </a>
+              <SidebarMenuButton onClick={() => setPage( item.page )} isActive={page === item.page}>
+                <item.icon />
+                <span>{item.title}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
-          ))}
+          ) )}
+          <SidebarMenuItem >
+            <SidebarMenuButton onClick={signOut} className="text-destructive">
+              <LogOut />
+              <span>Se déconnecter</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
-  )
+  );
 }

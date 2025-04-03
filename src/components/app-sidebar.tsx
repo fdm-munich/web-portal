@@ -1,26 +1,21 @@
-import * as React from "react"
+import * as React from "react";
 import {
-  IconCamera,
-  IconChartBar,
-  IconDashboard,
-  IconDatabase,
-  IconFileAi,
-  IconFileDescription,
-  IconFileWord,
-  IconFolder,
-  IconHelp,
-  IconInnerShadowTop,
-  IconListDetails,
-  IconReport,
-  IconSearch,
-  IconSettings,
-  IconUsers,
-} from "@tabler/icons-react"
+  Camera,
+  BarChart2,
+  Calendar,
+  LayoutDashboard,
+  FileCode2,
+  FileText,
+  FileCog,
+  Settings,
+  File,
+  Users
+} from "lucide-react";
 
-import { NavDocuments } from "@/components/nav-documents"
-import { NavMain } from "@/components/nav-main"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
+import { NavDocuments } from "@/components/nav-documents";
+import { NavMain } from "@/components/nav-main";
+import { NavSecondary } from "@/components/nav-secondary";
+import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -29,113 +24,109 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import { FdMIcon } from "./fdm-icon"
-import { CalendarDays, LayoutDashboard } from "lucide-react"
+} from "@/components/ui/sidebar";
+import { FdMIcon } from "./fdm-icon";
+import { Pages } from "@/stores/page";
+import { Mail } from "lucide-react";
 
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  navMain: [
+  navMain : [
     {
-      title: "Events",
-      url: "#",
-      icon: CalendarDays,
+      title : "Evénements",
+      page  : Pages.Event,
+      icon  : Calendar,
     },
     {
-      title: "Dashboard",
-      url: "#",
-      icon: LayoutDashboard,
+      title : "Tableau de bord",
+      page  : Pages.Dashboard,
+      icon  : LayoutDashboard,
     },
     {
-      title: "Resources",
-      url: "#",
-      icon: IconChartBar,
+      title : "Resources",
+      page  : Pages.Resources,
+      icon  : BarChart2,
     },
   ],
-  navClouds: [
+  navClouds : [
     {
-      title: "Capture",
-      icon: IconCamera,
-      isActive: true,
-      url: "#",
-      items: [
+      title    : "Capture",
+      icon     : Camera,
+      isActive : true,
+      url      : "#",
+      items    : [
         {
-          title: "Active Proposals",
-          url: "#",
+          title : "Active Proposals",
+          url   : "#",
         },
         {
-          title: "Archived",
-          url: "#",
+          title : "Archived",
+          url   : "#",
         },
       ],
     },
     {
-      title: "Proposal",
-      icon: IconFileDescription,
-      url: "#",
-      items: [
+      title : "Proposal",
+      icon  : FileText,
+      url   : "#",
+      items : [
         {
-          title: "Active Proposals",
-          url: "#",
+          title : "Active Proposals",
+          url   : "#",
         },
         {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: IconFileAi,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
+          title : "Archived",
+          url   : "#",
         },
       ],
     },
-  ],
-  navSecondary: [
     {
-      title: "Settings",
-      url: "#",
-      icon: IconSettings,
-    },
-    {
-      title: "Contactez nous",
-      url: "#",
-      icon: IconHelp,
-    },
-  ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: IconDatabase,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: IconReport,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: IconFileWord,
+      title : "Prompts",
+      icon  : FileCode2,
+      url   : "#",
+      items : [
+        {
+          title : "Active Proposals",
+          url   : "#",
+        },
+        {
+          title : "Archived",
+          url   : "#",
+        },
+      ],
     },
   ],
-}
+  navSecondary : [
+    {
+      title : "Paramètres",
+      page  : Pages.Settings,
+      icon  : Settings,
+    },
+    {
+      title : "Contact",
+      page  : Pages.Contact,
+      icon  : Mail,
+    },
+  ],
+  documents : [
+    {
+      name : "Votre bureau",
+      page : Pages.Board,
+      icon : Users,
+    },
+    {
+      name : "Nos status",
+      page : Pages.Status,
+      icon : File,
+    },
+    {
+      name : "Compte rendus",
+      url  : "#",
+      icon : FileCog,
+    },
+  ],
+};
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar( { ...props }: React.ComponentProps<typeof Sidebar> ) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -145,7 +136,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-             <FdMIcon />
+              <FdMIcon />
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -156,8 +147,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

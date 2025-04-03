@@ -1,28 +1,41 @@
-import { AppSidebar } from "@/components/app-sidebar"
-import { SiteHeader } from "@/components/site-header"
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar";
+import { SiteHeader } from "@/components/site-header";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { LoginForm } from "./components/login-form";
+import { useUserStore } from "./stores/user";
+import { Layout } from "@/layouts";
+import { useRedirect } from "./hooks/useRedirection";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { Membership } from "./components/membership"
+// import { Membership } from "./components/membership"
+const queryClient = new QueryClient();
 
 export default function Page() {
-  return (
-    <SidebarProvider>
-      <AppSidebar variant="inset" />
-      <SidebarInset>
-        <SiteHeader />
-        <div className="flex flex-1 flex-col">
-          <div className="@container/main flex flex-1 flex-col gap-2">
-            <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-              <div className="px-4 lg:px-6">
-              {/* <SectionCards /> */}
-              <Membership />
-              {/* <ChartAreaInteractive /> */}
-              {/* <DataTable data={data} /> */}
-              </div>
-            </div>
-          </div>
+  const loggedIn = useUserStore( s => s.loggedIn );
+  useRedirect();
+
+  if ( !loggedIn ) {
+    return (
+      <div className="flex min-h-svh flex-col items-center justify-center bg-muted p-6 md:p-10">
+        <div className="w-full max-w-sm md:max-w-3xl">
+          <LoginForm />
         </div>
-      </SidebarInset>
-    </SidebarProvider>
-  )
+      </div>
+    );
+  }
+
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <SidebarProvider>
+        <AppSidebar variant="inset" />
+        <SidebarInset>
+          <SiteHeader />
+          <div className="py-4 md:py-6 px-1 sm:px-4 lg:px-6">
+            <Layout />
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
+    </QueryClientProvider>
+  );
 }

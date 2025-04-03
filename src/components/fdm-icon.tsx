@@ -4,5 +4,5 @@ export function FdMIcon() {
       <img src="logo.webp" alt="fdm-logo" className="w-6 h-6 rounded-sm"  />
       <span className="text-base font-semibold">FdM - Munich e.V.</span>
     </div>
-  )
+  );
 }
