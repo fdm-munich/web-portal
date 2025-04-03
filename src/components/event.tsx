@@ -1,7 +1,6 @@
-import { Participation } from "./participation";
 import { TypographyH3 } from "./typography";
 import { Button } from "./ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardDescription, CardHeader } from "./ui/card";
 
 export function Event() {
   return (

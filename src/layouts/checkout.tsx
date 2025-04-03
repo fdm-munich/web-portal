@@ -31,7 +31,7 @@ export function Checkout() {
       <CardContent className="flex flex-col gap-4">
         <div className="flex flex-col gap-4">
           <p>Vous recevrez une confirmation par e-mail à l’adresse indiquée lors de votre paiement : </p>
-          <p className="text-upsdell-red">{customer.email}</p>
+          <p className="text-upsdell-red">{customer?.email}</p>
           <p className="text-grayish">Pensez à vérifier votre dossier spam si vous ne trouvez pas l’e-mail.</p>
           <p> Merci encore pour votre soutien !</p>
         </div>

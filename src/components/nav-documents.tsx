@@ -2,7 +2,6 @@
 //   IconDots,
 //   type Icon,
 // } from "@tabler/icons-react"
-import { DotIcon,  } from "lucide-react";
 
 import {
   SidebarGroup,
@@ -19,6 +18,7 @@ export function NavDocuments( {
   items: {
     name: string
     page: Pages
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     icon: any
   }[]
 } ) {

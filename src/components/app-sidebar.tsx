@@ -120,7 +120,7 @@ const data = {
     },
     {
       name : "Compte rendus",
-      url  : "#",
+      page : Pages.NotFound,
       icon : FileCog,
     },
   ],
