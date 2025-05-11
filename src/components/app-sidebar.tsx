@@ -28,6 +28,7 @@ import {
 import { FdMIcon } from "./fdm-icon";
 import { Pages } from "@/stores/page";
 import { Mail } from "lucide-react";
+import { NavBureau } from "./nav-bureau";
 
 const data = {
   navMain : [
@@ -41,59 +42,11 @@ const data = {
       page  : Pages.Dashboard,
       icon  : LayoutDashboard,
     },
-    {
-      title : "Resources",
-      page  : Pages.Resources,
-      icon  : BarChart2,
-    },
-  ],
-  navClouds : [
-    {
-      title    : "Capture",
-      icon     : Camera,
-      isActive : true,
-      url      : "#",
-      items    : [
-        {
-          title : "Active Proposals",
-          url   : "#",
-        },
-        {
-          title : "Archived",
-          url   : "#",
-        },
-      ],
-    },
-    {
-      title : "Proposal",
-      icon  : FileText,
-      url   : "#",
-      items : [
-        {
-          title : "Active Proposals",
-          url   : "#",
-        },
-        {
-          title : "Archived",
-          url   : "#",
-        },
-      ],
-    },
-    {
-      title : "Prompts",
-      icon  : FileCode2,
-      url   : "#",
-      items : [
-        {
-          title : "Active Proposals",
-          url   : "#",
-        },
-        {
-          title : "Archived",
-          url   : "#",
-        },
-      ],
-    },
+    // {
+    //   title : "Resources",
+    //   page  : Pages.Resources,
+    //   icon  : BarChart2,
+    // },
   ],
   navSecondary : [
     {
@@ -108,11 +61,11 @@ const data = {
     },
   ],
   documents : [
-    {
-      name : "Votre bureau",
-      page : Pages.Board,
-      icon : Users,
-    },
+    // {
+    //   name : "Votre bureau",
+    //   page : Pages.Board,
+    //   icon : Users,
+    // },
     {
       name : "Nos status",
       page : Pages.Status,
@@ -122,6 +75,13 @@ const data = {
       name : "Compte rendus",
       page : Pages.NotFound,
       icon : FileCog,
+    },
+  ],
+  bureau : [
+    {
+      name : "Vos adhérents",
+      page : Pages.Members,
+      icon : Users,
     },
   ],
 };
@@ -144,6 +104,7 @@ export function AppSidebar( { ...props }: React.ComponentProps<typeof Sidebar> )
       <SidebarContent>
         <NavMain items={data.navMain} />
         <NavDocuments items={data.documents} />
+        <NavBureau items={data.bureau} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>

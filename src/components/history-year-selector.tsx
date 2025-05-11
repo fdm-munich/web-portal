@@ -44,11 +44,11 @@ export function HistoryYearSelector() {
             variant="outline"
             role="combobox"
             aria-expanded={open}
-            className="w-[200px] justify-between"
+            className="w-[100px] justify-between"
           >
             {value
               ? years.find( ( year ) => year.value === value )?.label
-              : "Choississez une année"}
+              : "2025"}
             <ChevronsUpDown className="opacity-50" />
           </Button>
         </div>

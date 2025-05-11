@@ -1,36 +1,15 @@
-import { List } from "./typography/list";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 
-const emailAddress = "munich@francais-du-monde.org";
-const address = "Josef-Weigl-Str.7a 82041 - Deisenhofen, Deutschland";
-
 export function ContactUs() {
   return (
     <div className="flex flex-col sm:flex-row gap-4">
-      <div className="w-full sm:w-1/3">
-        <Card className="h-full">
-          <CardHeader>
-            <CardTitle>Nos détails</CardTitle>
-            <CardDescription>Voici nos information de contact</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <List>
-              <li>{ emailAddress }</li>
-              <li>{ address }</li>
-            </List>
-            <div className="flex justify-center items-center h-full mx-auto">
-              {/* Ensure the parent has a specific height */}
-              <div className="flex justify-center items-center h-[200px]">
-                <img src="./logo.png" className="rounded-md h-full object-contain" />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+      <div className="w-full sm:w-1/4 text-muted-foreground">
+        ... On potentiellement afficher ici les precedentes conversations ?
       </div>
-      <div className="w-full sm:w-2/3">
+      <div className="w-full sm:w-3/4">
         <Card>
           <CardHeader>
             <CardTitle>Contactez nous</CardTitle>

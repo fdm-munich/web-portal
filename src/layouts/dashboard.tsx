@@ -1,3 +1,4 @@
+import { ContactInfo } from "@/components/contact-info";
 import { ContactUs } from "@/components/contact-us";
 import { Membership } from "@/components/membership";
 import { NextEvent } from "@/components/next-event";
@@ -10,10 +11,12 @@ export function Dashboard() {
           <NextEvent />
         </div>
         <div className="w-full sm:w-1/2">
-          <Membership />
+          <ContactInfo />
         </div>
       </div>
-      <ContactUs />
+      <div>
+        <Membership />
+      </div>
     </div>
   );
 }

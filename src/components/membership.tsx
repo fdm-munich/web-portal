@@ -68,7 +68,8 @@ export function Membership() {
           </ul>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-end">
+        <div className="flex flex-col sm:flex-row justify-end gap-4">
+          <Button variant="outline" ><a download href="/certificat.pdf">Telecharger mon certificat</a></Button>
           <Button onClick={ () => window.location.href = `https://buy.stripe.com/test_28o7w224Dblm1JmaEI?prefilled_email=${email}` }>Renouveler mon adhésion</Button>
         </div>
       </CardContent>

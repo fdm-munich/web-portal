@@ -7,6 +7,7 @@ import { Status } from "./status";
 import { History } from "./history";
 import { Contact } from "./contact";
 import { Board } from "./board";
+import { Members } from "./members";
 
 export function Layout() {
   const page = usePageStore( s => s.page );
@@ -30,6 +31,8 @@ export function Layout() {
     return <Contact />;
   case Pages.Board:
     return <Board />;
+  case Pages.Members:
+    return <Members />;
   default:
     return (
       <>

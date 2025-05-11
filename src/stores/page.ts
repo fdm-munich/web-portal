@@ -11,7 +11,8 @@ export enum Pages {
   Checkout = "Checkout",
   NotFound = "Not Found",
   Status = "Nos statuts",
-  Board = "Votre Bureau"
+  Board = "Votre Bureau",
+  Members = "Vos adhérents"
 }
 
 interface PageStore {
@@ -30,6 +31,7 @@ export function useNavigation() {
   return {
     goToEvent     : () => setPage( Pages.Event ),
     goToCheckout  : () => setPage( Pages.Checkout ),
+    goToContact   : () => setPage( Pages.Contact ),
     goToDashboard : () => setPage( Pages.Dashboard ),
     goToHistory   : () => setPage( Pages.History ),
     goToHell      : () => {

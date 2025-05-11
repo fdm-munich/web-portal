@@ -6,7 +6,7 @@ interface props {
 
 export function List( { children }: props ) {
   return (
-    <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
+    <ul className="ml-6 list-disc [&>li]:mt-2">
       { children }
     </ul>
   );
